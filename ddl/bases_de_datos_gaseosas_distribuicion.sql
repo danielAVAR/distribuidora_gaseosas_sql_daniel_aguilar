@@ -15,6 +15,7 @@ CREATE TABLE sedes (
 CREATE TABLE clientes (
     id_cliente         INT AUTO_INCREMENT PRIMARY KEY,
     nombre_completo     VARCHAR(120) NOT NULL,
+    tipo_cliente        VARCHAR (30),
     identificacion      VARCHAR(20)  NOT NULL UNIQUE,
     direccion            VARCHAR(150),
     telefono             VARCHAR(20),
@@ -36,6 +37,7 @@ CREATE TABLE pedidos (
     id_pedido      INT AUTO_INCREMENT PRIMARY KEY,
     fecha_pedido    DATE NOT NULL,
     id_cliente      INT NOT NULL,
+    tipo_cliente    VARCHAR(20),
     id_sede         INT NOT NULL,
     total_sin_iva   DECIMAL(10,2) NOT NULL DEFAULT 0,
     total_con_iva   DECIMAL(10,2) NOT NULL DEFAULT 0,
@@ -89,12 +91,10 @@ INSERT INTO productos (nombre, categoria, precio, volumen_ml, stock_actual, stoc
 ('Gaseosa Cola 1.5L',        'Gaseosa', 5500.00, 1500, 40, 25),
 ('Bebida Energizante 250ml', 'Energizante', 4200.00, 250, 12, 10);
 
-INSERT INTO pedidos (fecha_pedido, id_cliente, id_sede, total_sin_iva, total_con_iva) VALUES
-('2026-01-10', 1, 1, 0, 0),
-('2026-01-15', 2, 2, 0, 0),
-('2026-02-02', 1, 1, 0, 0),
-('2026-02-20', 3, 3, 0, 0),
-('2026-03-05', 4, 1, 0, 0);
+INSERT INTO pedidos (fecha_pedido, id_cliente, tipo_cliente, id_sede, total_sin_iva, total_con_iva) VALUES
+('2026-01-10', 1, 1, 'minorista', 0, 0),
+('2026-01-10', 1, 2, 'mayorista', 0, 0);
+
 
 
 INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, subtotal) VALUES

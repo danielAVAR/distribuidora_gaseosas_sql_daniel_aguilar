@@ -54,3 +54,7 @@ SET total_sin_iva = (
         WHERE detalle_pedido.id_pedido = pedidos.id_pedido
     ),
     total_con_iva = fn_calcular_total_con_iva(id_pedido);
+    
+    
+    
+    
